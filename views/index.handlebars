@@ -7,7 +7,7 @@
             {{#each workout}}
             <div>
                 <h3>{{name}}</h3>
-                <div class="card-deck">
+                {{!-- <div class="card-deck row"> --}}
                     {{#each exercises}}
                     <div class="card">
                         <div class="card-body">
@@ -34,13 +34,13 @@
                     <div class="card">
                         <div class="card-body add-exercise-card">
                             <h4 class="card-title">Add an Exercise</h4>
-                            <div class="add-exercise">
+                            <div class="add-exercise" data-id={{_id}}>
 
                                 <button class="add-exercise-btn" data-id={{_id}}>➕</button>
                             </div>
                         </div>
                     </div>
-                </div>
+                {{!-- </div> --}}
             </div>
 
             {{/each}}
