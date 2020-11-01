@@ -1,0 +1,18 @@
+const express = require("express");
+const mongoose = require("mongoose");
+
+const router = express.Router();
+
+const db = require("../models");
+
+// Create all our routes and set up logic within those routes where required.
+router.get("/", async function(req, res) {
+    let workouts = await db.Workout.find().populate("exercises");
+    
+    workouts = workouts.map(elm => elm.toJSON());
+
+    res.render("index", {workout: workouts});
+});
+
+// Export routes for server.js to use.
+module.exports = router;

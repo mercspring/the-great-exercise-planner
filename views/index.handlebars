@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+        <div class="col-9">
+            {{#each workout}}
+            <div>
+                <h3>{{name}}</h3>
+                <div class="card-deck">
+                    {{#each exercises}}
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">{{name}} </h4>
+                            <p>{{type}}</p>
+                            {{#if weight}}
+                            <p>Weight: {{weight}}</p>
+                            {{/if}}
+                            {{#if sets}}
+                            <p>Sets: {{sets}}</p>
+                            {{/if}}
+                            {{#if reps}}
+                            <p>Reps: {{rep}}</p>
+                            {{/if}}
+                            {{#if duration}}
+                            <p>Duration: {{duration}}</p>
+                            {{/if}}
+                            {{#if distance}}
+                            <p>Distance: {{distance}}</p>
+                            {{/if}}
+                        </div>
+                    </div>
+                    {{/each}}
+                    <div class="card">
+                        <div class="card-body add-exercise-card">
+                            <h4 class="card-title">Add an Exercise</h4>
+                            <div class="add-exercise">
+
+                                <button class="add-exercise-btn" data-id={{_id}}>➕</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{/each}}
+            <button class="add-workout-btn">Add a Workout</button>
+        </div>
+    </div>
+</div>
+</div>
