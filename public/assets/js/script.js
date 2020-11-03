@@ -8,11 +8,16 @@ $(".add-exercise-btn").on("click", function (event) {
     const typeSelector = $("<select class='type'>")
     typeSelector.append("<option value='Lifting'>Lifting</option> <option value='Cardio'>Cardio</option> <option value='Other'>Other</option>")
     const addButton = $("<button class='add-btn'> Add Exercise</button>")
-
+    const name = new Input("name");
+    const duration = new Input("duration");
+    const reps = new Input("reps");
+    const sets = new Input("sets");
+    const weight = new Input("weight");
 
     // console.log("clicked")
     $(this).parent().append([typeSelector, addButton]);
     typeSelector.parent().prepend("<label for='type'>Type:</label>")
+    $(this).parent().append([name.line, reps.line, weight.line, sets.line, duration.line])
     $(this).remove();
 
 })
@@ -58,9 +63,42 @@ $(document).on("click", ".add-btn", function (event) {
         data: data
     }).then(function (result) {
         console.log(result);
+        location.reload();
     })
 });
 
+$(document).on("click", ".delete-exercise", function (event) {
+    event.preventDefault();
+    $.ajax({
+        method: "DELETE",
+        url: "/api/exercises/" + $(this).attr("data-w-id") + "/" + $(this).attr("data-ex-id"),
+    }).then(function (result) {
+        location.reload();
+    })
+})
 
 //Handler for the add workout button
+$(".add-workout-btn").on("click", function (event) {
+    event.preventDefault();
 
+    $.ajax({
+        method: "POST",
+        url: "/api/workouts",
+        data: {name: $(this).siblings(".workout-name").val()}
+    }).then(function (result) {
+        console.log(result);
+        location.reload();
+    })
+})
+
+$(".delete-workout").on("click", function (event) {
+    event.preventDefault();
+    $.ajax({
+        method: "DELETE",
+        url: "/api/workouts/" + $(this).attr("data-w-id"),
+    }).then(function (result) {
+        location.reload();
+    
+
+    })
+})

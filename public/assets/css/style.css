@@ -1,6 +1,35 @@
 body{
-    background-color: aquamarine;
+    background-color: khaki;
 }
 .exercise-info{
 display: block;
+}
+
+.card-body{
+    position: relative;
+}
+
+.workout-container{
+    position: relative;
+}
+.delete-exercise{
+    position: absolute;
+    right: 3px;
+    top: 3px;
+}
+
+.delete-workout{
+    
+    position: absolute;
+    right: 3px;
+    top: 3px;
+}
+
+img{
+    width: 200px;
+    margin-bottom: 5px;
+}
+
+.add-exercise, .add-workout{
+    margin-bottom: 6px;
 }

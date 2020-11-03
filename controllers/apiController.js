@@ -18,9 +18,22 @@ router.post("/exercises/:id", async function(req, res){
     res.json(result);
 })
 
+router.delete("/exercises/:wid/:exid", async function(req, res){
+    const deleteExercise = await db.Exercise.deleteOne({_id: mongoose.Types.ObjectId(req.params.exid)});
+    const result = await db.Workout.findOneAndUpdate({_id:mongoose.Types.ObjectId(req.params.wid)},{$pull: { exercises: req.params.exid}}, {new: true});
+    console.log(deleteExercise, result)
+    res.status(200).send(result);
+})
+
 router.post("/workouts", async function(req, res){
     const newWorkout = await db.Workout.create(req.body);
     res.status(200).json(newWorkout);
+})
+
+router.delete("/workouts/:id", async function(req, res){
+    console.log(req.params.id)
+    const workout = await db.Workout.deleteOne({_id: mongoose.Types.ObjectId(req.params.id)});
+    res.status(200).json(workout);
 })
 
 // Export routes for server.js to use.

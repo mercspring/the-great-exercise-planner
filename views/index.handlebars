@@ -1,50 +1,66 @@
 <div class="container">
     <div class="row">
-        <div class="col-3">
 
-        </div>
-        <div class="col-9">
+        <div class="col-8">
             {{#each workout}}
-            <div>
+            <div class="workout-container">
                 <h3>{{name}}</h3>
+                <button class="delete-workout" data-w-id={{_id}}>✖</button>
                 {{!-- <div class="card-deck row"> --}}
-                    {{#each exercises}}
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">{{name}} </h4>
-                            <p>{{type}}</p>
-                            {{#if weight}}
-                            <p>Weight: {{weight}}</p>
-                            {{/if}}
-                            {{#if sets}}
-                            <p>Sets: {{sets}}</p>
-                            {{/if}}
-                            {{#if reps}}
-                            <p>Reps: {{rep}}</p>
-                            {{/if}}
-                            {{#if duration}}
-                            <p>Duration: {{duration}}</p>
-                            {{/if}}
-                            {{#if distance}}
-                            <p>Distance: {{distance}}</p>
-                            {{/if}}
+                {{#each exercises}}
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{name}} </h4>
+                        <p>{{type}}</p>
+                        {{#if weight}}
+                        <p>Weight: {{weight}}</p>
+                        {{/if}}
+                        {{#if sets}}
+                        <p>Sets: {{sets}}</p>
+                        {{/if}}
+                        {{#if reps}}
+                        <p>Reps: {{reps}}</p>
+                        {{/if}}
+                        {{#if duration}}
+                        <p>Duration: {{duration}}</p>
+                        {{/if}}
+                        {{#if distance}}
+                        <p>Distance: {{distance}}</p>
+                        {{/if}}
+                        <button class="delete-exercise" data-ex-id={{_id}} data-w-id={{../_id}}>✖</button>
+                    </div>
+                </div>
+                {{/each}}
+                <div class="card">
+                    <div class="card-body add-exercise-card">
+                        <h4 class="card-title">Add an Exercise</h4>
+                        <div class="add-exercise" data-id={{_id}}>
+                            <button class="add-exercise-btn" data-id={{_id}}>➕</button>
                         </div>
                     </div>
-                    {{/each}}
-                    <div class="card">
-                        <div class="card-body add-exercise-card">
-                            <h4 class="card-title">Add an Exercise</h4>
-                            <div class="add-exercise" data-id={{_id}}>
-
-                                <button class="add-exercise-btn" data-id={{_id}}>➕</button>
-                            </div>
-                        </div>
-                    </div>
+                </div>
                 {{!-- </div> --}}
             </div>
 
             {{/each}}
-            <button class="add-workout-btn">Add a Workout</button>
+            <div class="card mb-3">
+                <div class="card-body add-workout-card">
+                    <h4 class="card-title">Add a Workout</h4>
+                    <div class="add-exercise" data-id={{_id}}>
+                        <label for="workout-name">Name:</label>
+                        <input class="workout-name" type="text">
+                        <button class="add-workout-btn" data-id={{_id}}>Add a Workout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+<img src="/assets/img/dino_workout.gif" alt="">
+<img src="/assets/img/carrot_workout.gif" alt="">
+<img src="/assets/img/egg_workout.gif" alt="">
+<img src="/assets/img/swole_workout.gif" alt="">
+<img src="/assets/img/veg_workout.gif" alt="">
+<img src="/assets/img/treadmill_workout.gif" alt="">
         </div>
     </div>
 </div>
