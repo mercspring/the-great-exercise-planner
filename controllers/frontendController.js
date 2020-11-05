@@ -9,7 +9,13 @@ const db = require("../models");
 router.get("/", async function(req, res) {
     let workouts = await db.Workout.find().populate("exercises");
     
-    workouts = workouts.map(elm => elm.toJSON());
+    let arr = ["test", "array"]
+    console.log("workouts:", workouts)
+    workouts = workouts.map(elm => JSON.stringify(elm));
+    // workouts = JSON.stringify(workouts);
+    console.log("workouts:", workouts);
+    console.log("workouts type", typeof workouts);
+    console.log("arr type", typeof arr);
 
     res.render("index", {workout: workouts});
 });
